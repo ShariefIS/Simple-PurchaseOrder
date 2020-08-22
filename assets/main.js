@@ -15,7 +15,7 @@
         $scope.meatList = [
             { id: 1, name: "Mutton", amount: 550 },
             { id: 2, name: "Chicken", amount: 110 },
-            { id: 3, name: "Beaf", amount: 200 },
+            { id: 3, name: "Beef", amount: 200 },
             { id: 4, name: "Fish", amount: 570 }
         ];
 
