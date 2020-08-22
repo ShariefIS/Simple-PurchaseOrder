@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/main.css">
+</head>
+
+<body class="bg-light" ng-app="simple-purchase" ng-controller="purchaseCtrl">
+    <div class="container-fluid">
+        <div class="py-2 text-center">
+            <img class="d-block mx-auto mb-2"
+                src="data:image/png;base64,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"
+                alt="" width="72" height="72">
+            <h2>Checkout form</h2>
+        </div>
+
+        <div class="p-4 page-body">
+            <!-- <div class="col-md-4 order-md-2 mb-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Your cart</span>
+                    <span class="badge badge-secondary badge-pill">3</span>
+                </h4>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">Product name</h6>
+                            <small class="text-muted">Brief description</small>
+                        </div>
+                        <span class="text-muted">$12</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">Second product</h6>
+                            <small class="text-muted">Brief description</small>
+                        </div>
+                        <span class="text-muted">$8</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">Third item</h6>
+                            <small class="text-muted">Brief description</small>
+                        </div>
+                        <span class="text-muted">$5</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between bg-light">
+                        <div class="text-success">
+                            <h6 class="my-0">Promo code</h6>
+                            <small>EXAMPLECODE</small>
+                        </div>
+                        <span class="text-success">-$5</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Total (USD)</span>
+                        <strong>$20</strong>
+                    </li>
+                </ul>
+
+                <form class="card p-2">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Promo code">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-secondary">Redeem</button>
+                        </div>
+                    </div>
+                </form>
+            </div> -->
+            <form class="needs-validation bg-white px-3 py-5 w-100 rounded" id="purchaseForm" novalidate
+                ng-submit="submit($event)">
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="mb-3">Purchase Meat</h4>
+                            <strong ng-if="meatAmount"> Amount/Kg: {{meatAmount}}</strong>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="country">Select Meat</label>
+                                <select class="custom-select d-block w-100"
+                                    ng-options="item.id as item.name for item in meatList" ng-model="selectedMeat"
+                                    ng-change="meatSelected()" required>
+                                    <option value="">Choose...</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a Meat.
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="state">Select Quantity</label>
+                                <select class="custom-select d-block w-100" id="state" required
+                                    ng-disabled="!selectedMeat"
+                                    ng-options="item.id as item.quantity for item in meatQuantities | filter:{ meatID: selectedMeat}"
+                                    ng-model="selectedQuantity" ng-change="quantitySelected()">
+                                    <option value="">Choose...</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a Quantity.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="mb-3">Payment</h4>
+                            <strong>Total: {{totalAmount}} </strong>
+                        </div>
+                        <div class="form-row">
+                            <label for="country">Select Payment Option</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                value="option1" required>
+                            <label class="form-check-label text-capitalize" for="inlineRadio1">cash on delivery</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                value="option2" required>
+                            <label class="form-check-label text-capitalize" for="inlineRadio2">Pay with Card</label>
+                        </div>
+                        <input class="form-check-input" ng-show="false" type="radio" name="inlineRadioOptions"
+                            id="inlineRadio2" value="option2" required>
+                        <div class="invalid-feedback">
+                            Please select a Payment Method.
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="mb-4">
+                <div class="d-block float-right">
+                    <button class="btn btn-secondary btn-md m-2" ng-if="showReset" ng-click="Reset()">Reset</button>
+                    <button class="btn btn-primary btn-md m-2" type="submit">Continue to checkout</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="./assets/main.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</body>
+
+</html>
